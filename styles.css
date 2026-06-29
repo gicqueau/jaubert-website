@@ -1,0 +1,305 @@
+/* =========================================================================
+   Cabinet Jaubert — Feuille de styles (staging)
+   Design system : bleu + vert (santé / réparation du préjudice corporel)
+   Accessibilité : RGAA / WCAG AA — audience vulnérable (victimes)
+   ========================================================================= */
+
+/* ---- 1. Variables de design (palette + tokens) ----------------------- */
+:root{
+  /* Palette (cf. RECOMMENDATION.md) */
+  --bleu-conseil:#1B3A5B;     /* nav, H1, autorité */
+  --bleu-confiance:#2E6CA4;   /* liens, boutons secondaires, focus */
+  --vert-apaise:#3A8E7C;      /* fills CTA (texte blanc gras) */
+  --vert-aa:#2F7567;          /* liens / texte vert (contraste AA) */
+  --vert-clair:#E8F2EE;       /* fonds de section */
+  --ardoise:#21303A;          /* corps de texte (~13:1) */
+  --gris:#5C6B73;             /* texte secondaire */
+  --brume:#F5F7F8;            /* fond de page */
+  --blanc:#FFFFFF;
+
+  --line:#DDE5E9;             /* bordures discrètes */
+  --shadow:0 2px 8px rgba(27,58,91,.06),0 10px 30px rgba(27,58,91,.06);
+  --radius:14px;
+  --maxw:1120px;
+  --maxw-narrow:760px;
+
+  /* Typographie */
+  --serif:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+/* ---- 2. Reset / base ------------------------------------------------- */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:var(--sans);
+  font-size:18px;            /* corps min 18px */
+  line-height:1.65;
+  color:var(--ardoise);
+  background:var(--brume);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+img{max-width:100%;height:auto;display:block}
+
+/* Titres serif */
+h1,h2,h3,h4{font-family:var(--serif);color:var(--bleu-conseil);line-height:1.12;font-weight:600;margin:0 0 .5em}
+h1{font-size:clamp(34px,6vw,52px);letter-spacing:-.01em}
+h2{font-size:clamp(28px,4vw,40px)}
+h3{font-size:clamp(20px,2.4vw,25px)}
+h4{font-size:20px}
+p{margin:0 0 1em}
+a{color:var(--vert-aa)}
+a:hover{color:var(--bleu-confiance)}
+
+/* ---- 3. Accessibilité : skip-link + focus visible ------------------- */
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:200;
+  background:var(--bleu-conseil);color:#fff;padding:12px 18px;
+  border-radius:0 0 8px 0;font-weight:600;text-decoration:none;
+}
+.skip-link:focus{left:0}
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,
+textarea:focus-visible,summary:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid var(--bleu-confiance);
+  outline-offset:2px;
+  border-radius:4px;
+}
+
+/* ---- 4. Mise en page utilitaire ------------------------------------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.narrow{max-width:var(--maxw-narrow);margin-left:auto;margin-right:auto}
+section{padding:clamp(48px,7vw,84px) 0}
+.section-tint{background:var(--vert-clair)}
+.section-white{background:var(--blanc)}
+.eyebrow{
+  display:inline-block;color:var(--vert-aa);font-weight:700;
+  font-size:14px;letter-spacing:.08em;text-transform:uppercase;
+  margin-bottom:14px;font-family:var(--sans);
+}
+.lead{font-size:clamp(19px,2.4vw,22px);color:var(--gris)}
+.center{text-align:center}
+
+/* ---- 5. Boutons ----------------------------------------------------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5em;
+  font-family:var(--sans);font-weight:700;font-size:17px;
+  padding:14px 26px;min-height:48px;border-radius:12px;
+  text-decoration:none;cursor:pointer;border:2px solid transparent;
+  transition:transform .15s ease,background .15s ease,box-shadow .15s ease;
+  line-height:1.2;
+}
+.btn-primary{background:var(--vert-apaise);color:#fff;border-color:var(--vert-apaise)}
+.btn-primary:hover{background:var(--vert-aa);color:#fff;transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-secondary{background:transparent;color:var(--bleu-confiance);border-color:var(--bleu-confiance)}
+.btn-secondary:hover{background:var(--bleu-confiance);color:#fff;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--bleu-conseil);border-color:var(--line);font-weight:600}
+.btn-ghost:hover{border-color:var(--bleu-confiance);color:var(--bleu-confiance)}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+
+/* ---- 6. Barre utilitaire (top) -------------------------------------- */
+.utility-bar{
+  background:var(--bleu-conseil);color:#fff;font-size:14px;
+}
+.utility-bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-top:9px;padding-bottom:9px}
+.utility-bar a{color:#fff;text-decoration:none;font-weight:600}
+.utility-bar a:hover{text-decoration:underline}
+.utility-bar .u-item{display:inline-flex;align-items:center;gap:7px}
+.utility-bar .u-spacer{margin-left:auto}
+.utility-bar .lang span{opacity:.6}
+
+/* ---- 7. Navigation collante ----------------------------------------- */
+.site-nav{
+  position:sticky;top:0;z-index:100;background:rgba(255,255,255,.97);
+  border-bottom:1px solid var(--line);backdrop-filter:saturate(160%) blur(6px);
+}
+.site-nav .wrap{display:flex;align-items:center;gap:18px;padding-top:12px;padding-bottom:12px}
+.brand{display:flex;flex-direction:column;text-decoration:none;line-height:1.1}
+.brand b{font-family:var(--serif);font-size:22px;color:var(--bleu-conseil);font-weight:600}
+.brand small{font-size:12.5px;color:var(--gris);letter-spacing:.04em;text-transform:uppercase}
+.nav-links{display:flex;gap:6px;margin-left:auto;align-items:center;flex-wrap:wrap}
+.nav-links a{
+  color:var(--ardoise);text-decoration:none;font-weight:600;font-size:16px;
+  padding:9px 12px;border-radius:9px;
+}
+.nav-links a:hover{background:var(--vert-clair);color:var(--bleu-conseil)}
+.nav-links .nav-phone{color:var(--bleu-confiance)}
+.nav-links .btn{padding:11px 18px;font-size:16px;min-height:44px}
+.nav-toggle{display:none}
+
+/* ---- 8. Hero -------------------------------------------------------- */
+.hero{background:linear-gradient(160deg,#fff 0%,var(--vert-clair) 100%)}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{margin-bottom:.35em}
+.hero .lead{margin-bottom:1.4em}
+.hero .micro{margin-top:18px;font-size:15px;color:var(--gris)}
+.hero .micro::before{content:"\2713 ";color:var(--vert-aa);font-weight:700}
+
+/* Portrait placeholder (monogramme DJ) */
+.portrait{
+  aspect-ratio:4/5;border-radius:18px;box-shadow:var(--shadow);
+  background:
+    radial-gradient(120% 120% at 30% 20%,rgba(255,255,255,.35),transparent 60%),
+    linear-gradient(155deg,var(--bleu-confiance) 0%,var(--bleu-conseil) 55%,var(--vert-aa) 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#fff;text-align:center;padding:24px;
+}
+.portrait .mono{font-family:var(--serif);font-size:clamp(56px,9vw,92px);font-weight:600;line-height:1}
+.portrait .cap{margin-top:14px;font-size:15px;opacity:.92;font-weight:600}
+.portrait--small{aspect-ratio:1/1;max-width:220px}
+
+/* ---- 9. Grilles de cartes ------------------------------------------ */
+.grid{display:grid;gap:22px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;box-shadow:var(--shadow);height:100%;
+}
+.card h3{margin-bottom:.4em}
+.card p:last-child{margin-bottom:0}
+.card .ic{
+  width:46px;height:46px;border-radius:11px;background:var(--vert-clair);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+  color:var(--vert-aa);font-weight:700;font-size:20px;
+}
+a.card{text-decoration:none;color:inherit;display:block;transition:transform .15s ease,box-shadow .15s ease}
+a.card:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(27,58,91,.12)}
+a.card .more{color:var(--vert-aa);font-weight:700;font-size:15px}
+
+/* ---- 10. Différenciateurs (liste icônes) --------------------------- */
+.diff{display:flex;gap:16px;align-items:flex-start}
+.diff .num{
+  flex:0 0 auto;width:42px;height:42px;border-radius:50%;
+  background:var(--bleu-conseil);color:#fff;font-weight:700;
+  display:flex;align-items:center;justify-content:center;font-size:18px;
+}
+.diff h3{font-size:21px;margin-bottom:.25em}
+.diff p{margin:0;color:var(--gris);font-size:17px}
+
+/* ---- 11. Bandeau Mediator (crédibilité) ---------------------------- */
+.cred-band{background:var(--bleu-conseil);color:#fff}
+.cred-band h2,.cred-band h3{color:#fff}
+.cred-band .stat{font-family:var(--serif);font-size:clamp(48px,8vw,76px);font-weight:600;color:#fff;line-height:1}
+.cred-band p{color:rgba(255,255,255,.9);font-size:19px}
+.cred-band .wrap{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+.cred-band .source{font-size:14px;color:rgba(255,255,255,.6);margin-top:8px}
+
+/* ---- 12. Processus (4 étapes) -------------------------------------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:step}
+.step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);position:relative}
+.step::before{
+  counter-increment:step;content:counter(step);
+  display:flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border-radius:50%;
+  background:var(--vert-apaise);color:#fff;font-weight:700;font-family:var(--serif);
+  font-size:20px;margin-bottom:14px;
+}
+.step h3{font-size:20px;margin-bottom:.35em}
+.step p{margin:0;font-size:16px;color:var(--gris)}
+
+/* ---- 13. Disclaimer / encadrés ------------------------------------- */
+.note{
+  background:var(--brume);border:1px solid var(--line);border-left:4px solid var(--bleu-confiance);
+  border-radius:8px;padding:16px 20px;font-size:16px;color:var(--gris);
+}
+.disclaimer{font-size:15px;color:var(--gris);font-style:italic;margin-top:18px}
+
+/* Liste à puces "check" */
+.check-list{list-style:none;padding:0;margin:0}
+.check-list li{position:relative;padding-left:32px;margin-bottom:12px}
+.check-list li::before{
+  content:"";position:absolute;left:0;top:.45em;width:16px;height:16px;border-radius:50%;
+  background:var(--vert-apaise);
+}
+.check-list li::after{
+  content:"";position:absolute;left:5px;top:.7em;width:5px;height:8px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg);
+}
+
+/* ---- 14. Témoignages ---------------------------------------------- */
+.quote{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow);height:100%}
+.quote p{font-family:var(--serif);font-size:21px;color:var(--bleu-conseil);font-style:italic;margin-bottom:.8em}
+.quote .who{font-family:var(--sans);font-size:15px;color:var(--gris);font-style:normal}
+
+/* ---- 15. Formulaire de contact ------------------------------------ */
+.form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:clamp(24px,4vw,40px);box-shadow:var(--shadow)}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:600;font-size:16px;margin-bottom:6px;color:var(--bleu-conseil)}
+.field .req{color:var(--vert-aa)}
+.field input,.field select,.field textarea{
+  width:100%;font-family:var(--sans);font-size:17px;color:var(--ardoise);
+  padding:12px 14px;border:1px solid var(--gris);border-radius:10px;background:#fff;min-height:48px;
+}
+.field textarea{min-height:120px;resize:vertical}
+.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.consent{display:flex;gap:12px;align-items:flex-start;font-size:16px}
+.consent input{width:22px;height:22px;min-height:22px;flex:0 0 auto;margin-top:3px}
+.consent label{font-weight:400;color:var(--ardoise)}
+.form-reassure{font-size:15px;color:var(--gris);margin-top:14px}
+
+/* ---- 16. Pied de page --------------------------------------------- */
+.site-footer{background:var(--bleu-conseil);color:rgba(255,255,255,.85);font-size:16px}
+.site-footer .wrap{padding-top:54px;padding-bottom:30px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+.site-footer h4{color:#fff;font-family:var(--sans);font-size:15px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px}
+.site-footer a{color:rgba(255,255,255,.85);text-decoration:none;display:inline-block;padding:3px 0}
+.site-footer a:hover{color:#fff;text-decoration:underline}
+.site-footer ul{list-style:none;padding:0;margin:0}
+.site-footer .brand b{color:#fff}
+.site-footer .brand small{color:rgba(255,255,255,.6)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.15);margin-top:36px;padding-top:22px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:14px;color:rgba(255,255,255,.6)
+}
+.footer-bottom a{color:rgba(255,255,255,.8)}
+
+/* ---- 17. Pages internes (mentions / RGPD) -------------------------- */
+.doc{background:#fff}
+.doc .wrap{padding-top:48px;padding-bottom:64px}
+.doc h1{margin-bottom:.6em}
+.doc h2{font-size:clamp(24px,3vw,30px);margin-top:1.6em}
+.doc table{width:100%;border-collapse:collapse;margin:1em 0;font-size:16px}
+.doc th,.doc td{text-align:left;padding:10px 12px;border:1px solid var(--line);vertical-align:top}
+.doc th{background:var(--vert-clair);color:var(--bleu-conseil)}
+.placeholder{
+  background:#FFF6E5;border:1px dashed #C9962B;border-radius:6px;
+  padding:2px 8px;font-weight:600;color:#8A5B00;font-size:.95em;
+}
+.back-link{display:inline-block;margin-bottom:20px;font-weight:600}
+
+/* ---- 18. Responsive ----------------------------------------------- */
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero .portrait{max-width:360px;margin:0 auto}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .cred-band .wrap{grid-template-columns:1fr;gap:18px;text-align:center}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:680px){
+  .nav-links{
+    display:none;width:100%;flex-direction:column;align-items:stretch;
+    margin-left:0;margin-top:10px;gap:4px;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px}
+  .site-nav .wrap{flex-wrap:wrap}
+  .nav-toggle{
+    display:inline-flex;align-items:center;justify-content:center;margin-left:auto;
+    width:46px;height:46px;border:1px solid var(--line);border-radius:10px;
+    background:#fff;color:var(--bleu-conseil);font-size:22px;cursor:pointer;
+  }
+  .grid-2,.grid-3,.grid-4,.steps,.field-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .doc table,.doc thead,.doc tbody,.doc th,.doc td,.doc tr{display:block}
+  .doc th{border-bottom:none}
+}
+
+/* ---- 19. Mouvement réduit ----------------------------------------- */
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
