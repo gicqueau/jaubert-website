@@ -72,3 +72,34 @@ engagement »**. Les exemples de dossiers portent la mention
 ---
 
 Réalisé par [USHAIA](https://ushaia.com).
+
+## v2 — Mise en conformité déontologique (2026-06-29)
+Sources : Vade-mecum communication numérique (Barreau de Paris, 2020, lu intégralement),
+Guide médias & réseaux sociaux (BdP 2023), Vade-mecum CNB 3e éd. 2023, RIN/RIBP.
+
+Changements :
+- RETRAIT du bandeau Mediator/AAAVAM/« 478 parties civiles » → secret professionnel sur
+  l'identité du client même avec accord (RIN art. 2.2) + interdiction des éléments chiffrés
+  laudatifs (RIN art. 10.2). Remplacé par un bandeau thématique (produits de santé / actions
+  collectives) + une section **Presse**.
+- AJOUT section **Presse** : SEUL vecteur admis pour évoquer des affaires (renvoi à des
+  articles/interviews publics). → À COMPLÉTER avec de vrais liens publics validés par Me Jaubert.
+- RETRAIT des **témoignages clients** (RIN art. 10.2 : non recommandés ; secret pro).
+- PAS de « consultation gratuite » affichée (publier une telle offre = risque de concurrence
+  déloyale, vade-mecum). Honoraires : convention d'honoraires + facilités de paiement.
+- Identification page d'accueil : Maître Didier Jaubert, Toque E1558, exercice individuel.
+- mentions-legales.html refondues : éditeur, dir. publication, hébergeur, profession
+  réglementée (RIN/RIBP, décret 2023-552, RC pro), **médiateur de la consommation**
+  (Sandra Werey 2026-2028), RGPD. PAS de lien ODR (fermée le 20/07/2025).
+
+### ÉTAPE OBLIGATOIRE AVANT MISE EN LIGNE (production)
+Soumettre le site / la maquette au Conseil de l'Ordre AVANT mise en ligne (art. 10.5/10.6 RIN) :
+email à delegationgenerale@avocatparis.org avec le nom de domaine + lien vers la maquette.
+La validation de l'Ordre ne doit pas être publiée sur le site.
+
+### À CONFIRMER / placeholders restants
+- Vrais liens d'articles de presse (section Presse) — validés par Me Jaubert.
+- Tél / email / SIRET / TVA réels ; portrait réel ; backend du formulaire (Formspree).
+- Domaine de production basé sur le nom (ex. *jaubert-avocat.fr*), non générique ; jamais
+  « avocats » au pluriel (exercice individuel).
+- Décider du nom du médiateur en vigueur au jour de la mise en ligne.
